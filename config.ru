@@ -1,3 +1,3 @@
-require './lib/emojinator'
+require './lib/emojinate'
 
-run Emojinator
+run Emojinate
