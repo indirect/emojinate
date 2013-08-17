@@ -23,16 +23,17 @@ class Emojinate < Sinatra::Base
   include EmojiHelper
 
   get '/' do
-    "<form action='/decode' method='post'><input type='text' name='string'></form>"
+    "<form action='/decode'><input type='text' name='q'></form>"
   end
 
   get '/emoji/:name' do
     File.read(emoji_path(params[:name]))
   end
 
-  post '/decode' do
-    decoded = Rumoji.encode(params[:string])
+  get '/decode' do
+    decoded = Rumoji.encode(params[:q])
     "<p>#{decoded}</p>" + "<p>#{emojify(decoded)}</p>"
   end
+
 end
 
